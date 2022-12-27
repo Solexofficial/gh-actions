@@ -8,22 +8,25 @@ jobs:
         uses: actions/checkout@v3
       - name: ✨npm install
         run: npm ci
-      - name: 🛠️Testing app...
+      - name: 🛠️ Testing app...
         run: npm run test
   lint:
     runs-on: ubuntu-latest
-      steps:
+    needs: test
+    steps:
       - name: 🎉Get rep src code
         uses: actions/checkout@v3
       - name: ✨npm install
         run: npm ci
-      - name: 🐛Lint tests app...
+      - name: 🐛 Lint tests app...
         run: npm run lint
   build:
-     steps:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
       - name: 🎉Get rep src code
         uses: actions/checkout@v3
-      - name: ✨npm install
+      - name: ✨ npm install
         run: npm ci
       - name: 🚀Build app...
         run: npm run build
