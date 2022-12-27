@@ -1,0 +1,12 @@
+name: 🛠️Test React App
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🎉Get rep src code
+        uses: actions/checkout@v3
+      - name: ✨npm install
+        run: npm ci
+      - name: 🛠️run tests app
+        run: npm run test
